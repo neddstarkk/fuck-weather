@@ -38,17 +38,17 @@ class WeatherModel {
       );
     } else if (condition < 700) {
       return Icon(
-        WeatherIcons.snow,
+        WeatherIcons.snowflake_cold,
         size: 100,
       );
     } else if (condition < 800) {
       return Icon(
-        WeatherIcons.day_haze,
+        WeatherIcons.fog,
         size: 100,
       );
     } else if (condition == 800) {
       return Icon(
-        WeatherIcons.night_clear,
+        WeatherIcons.day_sunny,
         size: 100,
       );
     } else if (condition <= 804) {

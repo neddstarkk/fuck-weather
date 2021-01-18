@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuck_weather/screens/widgets/seven_word_text.dart';
 import 'package:fuck_weather/screens/widgets/six_word_text.dart';
 import 'package:fuck_weather/screens/widgets/four_word_text.dart';
 import 'package:fuck_weather/screens/widgets/three_word_text.dart';
@@ -35,11 +36,10 @@ class _LocationScreenState extends State<LocationScreen> {
         return;
       }
       var condition = weatherData['weather'][0]['id'];
+      condition = 600;
       weatherIcon = weather.getWeatherIcon(condition);
-      condition = 230;
       weatherMessage = weather.getMessage(condition);
       listMessage = weatherMessage.split(' ');
-      print(listMessage);
     });
   }
 
@@ -56,13 +56,21 @@ class _LocationScreenState extends State<LocationScreen> {
             ),
             Spacer(),
             if (listMessage.length == 3)
-              ThreeWordText(listMessage: listMessage,)
+              ThreeWordText(
+                listMessage: listMessage,
+              )
             else if (listMessage.length == 4)
-              FourWordText(listMessage: listMessage,)
+              FourWordText(
+                listMessage: listMessage,
+              )
             else if (listMessage.length == 6)
-                SixWordText(listMessage: listMessage,)
+              SixWordText(
+                listMessage: listMessage,
+              )
             else if (listMessage.length == 7)
-              Container()
+              SevenWordText(
+                listMessage: listMessage,
+              )
           ],
         ),
       ),
