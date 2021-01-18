@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuck_weather/services/weather.dart';
+import 'package:fuck_weather/utilities/constants.dart';
 
 class LocationScreen extends StatefulWidget {
   final locationWeather;
@@ -31,10 +32,10 @@ class _LocationScreenState extends State<LocationScreen> {
         return;
       }
       var condition = weatherData['weather'][0]['id'];
+      weatherIcon = weather.getWeatherIcon(condition);
+      condition = 800;
       weatherMessage = weather.getMessage(condition);
       listMessage = weatherMessage.split(' ');
-      print(listMessage);
-      weatherIcon = weather.getWeatherIcon(condition);
     });
   }
 
@@ -44,17 +45,41 @@ class _LocationScreenState extends State<LocationScreen> {
       child: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               child: weatherIcon,
               margin: EdgeInsets.all(10),
             ),
-            if(listMessage.length == 4) Container()
-            else if (listMessage.length == 5) Container()
-            else if (listMessage.length == 6) Container()
-            else if (listMessage.length == 7) Container()
-
+            Spacer(),
+            if (listMessage.length == 4)
+              Container(
+                margin: EdgeInsets.only(bottom: 10, left: 20),
+                child: Wrap(
+                  children: [
+                    Text(
+                      "${listMessage[0]} ${listMessage[1]}",
+                      style: kMainTextStyle,
+                    ),
+                    Text(
+                      "${listMessage[2]}",
+                      style: kMainTextStyle.copyWith(
+                          color: listMessage[2] == "sunny"
+                              ? Color(0xFFECA72C)
+                              : Color(0xFF017EFF)),
+                    ),
+                    Text(
+                      "${listMessage[3]}",
+                      style: kMainTextStyle,
+                    ),
+                  ],
+                ),
+              )
+            else if (listMessage.length == 5)
+              Container()
+            else if (listMessage.length == 6)
+              Container()
+            else if (listMessage.length == 7)
+              Container()
           ],
         ),
       ),
