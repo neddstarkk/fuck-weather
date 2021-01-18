@@ -23,7 +23,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
     var weatherData = await weatherModel.getLocationWeather();
 
     Navigator.push(
-        context, CupertinoPageRoute(builder: (context) => LocationScreen()));
+      context,
+      CupertinoPageRoute(
+        builder: (context) => LocationScreen(
+          locationWeather: weatherData,
+        ),
+      ),
+    );
   }
 
   @override
