@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fuck_weather/screens/widgets/six_word_text.dart';
+import 'package:fuck_weather/screens/widgets/four_word_text.dart';
+import 'package:fuck_weather/screens/widgets/three_word_text.dart';
 import 'package:fuck_weather/services/weather.dart';
 import 'package:fuck_weather/utilities/constants.dart';
 
@@ -33,9 +36,10 @@ class _LocationScreenState extends State<LocationScreen> {
       }
       var condition = weatherData['weather'][0]['id'];
       weatherIcon = weather.getWeatherIcon(condition);
-      condition = 800;
+      condition = 230;
       weatherMessage = weather.getMessage(condition);
       listMessage = weatherMessage.split(' ');
+      print(listMessage);
     });
   }
 
@@ -51,33 +55,12 @@ class _LocationScreenState extends State<LocationScreen> {
               margin: EdgeInsets.all(10),
             ),
             Spacer(),
-            if (listMessage.length == 4)
-              Container(
-                margin: EdgeInsets.only(bottom: 10, left: 20),
-                child: Wrap(
-                  children: [
-                    Text(
-                      "${listMessage[0]} ${listMessage[1]}",
-                      style: kMainTextStyle,
-                    ),
-                    Text(
-                      "${listMessage[2]}",
-                      style: kMainTextStyle.copyWith(
-                          color: listMessage[2] == "sunny"
-                              ? Color(0xFFECA72C)
-                              : Color(0xFF017EFF)),
-                    ),
-                    Text(
-                      "${listMessage[3]}",
-                      style: kMainTextStyle,
-                    ),
-                  ],
-                ),
-              )
-            else if (listMessage.length == 5)
-              Container()
+            if (listMessage.length == 3)
+              ThreeWordText(listMessage: listMessage,)
+            else if (listMessage.length == 4)
+              FourWordText(listMessage: listMessage,)
             else if (listMessage.length == 6)
-              Container()
+                SixWordText(listMessage: listMessage,)
             else if (listMessage.length == 7)
               Container()
           ],

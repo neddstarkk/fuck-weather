@@ -22,42 +22,65 @@ class WeatherModel {
 
   Icon getWeatherIcon(int condition) {
     if (condition < 300) {
-      return Icon(WeatherIcons.thunderstorm);
+      return Icon(
+        WeatherIcons.thunderstorm,
+        size: 100,
+      );
     } else if (condition < 400) {
-      return Icon(WeatherIcons.raindrops);
+      return Icon(
+        WeatherIcons.raindrops,
+        size: 100,
+      );
     } else if (condition < 600) {
-      return Icon(WeatherIcons.rain);
+      return Icon(
+        WeatherIcons.rain,
+        size: 100,
+      );
     } else if (condition < 700) {
-      return Icon(WeatherIcons.snow);
+      return Icon(
+        WeatherIcons.snow,
+        size: 100,
+      );
     } else if (condition < 800) {
-      return Icon(WeatherIcons.day_haze, size: 100,);
+      return Icon(
+        WeatherIcons.day_haze,
+        size: 100,
+      );
     } else if (condition == 800) {
-      return Icon(WeatherIcons.night_clear);
+      return Icon(
+        WeatherIcons.night_clear,
+        size: 100,
+      );
     } else if (condition <= 804) {
-      return Icon(WeatherIcons.cloudy);
+      return Icon(
+        WeatherIcons.cloudy,
+        size: 100,
+      );
     } else {
-      return Icon(Icons.error);
+      return Icon(
+        Icons.error,
+        size: 100,
+      );
     }
   }
 
   String getMessage(int condition) {
     if (condition < 300) {
-      return 'It\'s a fucking thunderstorm out there';
+      return 'It\'s a fucking storm out there';
     } else if (condition < 400) {
       return 'It\'s fucking drizzling now';
     } else if (condition < 600) {
       return 'It\'s fucking raining now';
     } else if (condition < 700) {
-      return 'It\'s fucking snowing out there';
+      return 'Freezing cold like a fucking fridge';
     } else if (condition < 800) {
       return 'It\'s a little fucking hazy right now';
     } else if (condition == 800) {
       return 'It\'s fucking sunny now';
     } else if (condition <= 804) {
-      return 'It\'s fucking cloudy up there';
+      return 'Just fucking grey';
     } else {
       return '';
     }
   }
-
 }
