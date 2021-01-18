@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fuck_weather/services/location.dart';
 import 'package:fuck_weather/services/networking.dart';
+import 'package:fuck_weather/utilities/size_config.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 const apiKey = '265c27f1819e714e8297ccb54c8ad155';
@@ -20,47 +21,23 @@ class WeatherModel {
     return weatherData;
   }
 
-  Icon getWeatherIcon(int condition) {
+  IconData getWeatherIcon(int condition) {
     if (condition < 300) {
-      return Icon(
-        WeatherIcons.thunderstorm,
-        size: 100,
-      );
+      return WeatherIcons.thunderstorm;
     } else if (condition < 400) {
-      return Icon(
-        WeatherIcons.raindrops,
-        size: 100,
-      );
+      return WeatherIcons.raindrops;
     } else if (condition < 600) {
-      return Icon(
-        WeatherIcons.rain,
-        size: 100,
-      );
+      return WeatherIcons.rain;
     } else if (condition < 700) {
-      return Icon(
-        WeatherIcons.snowflake_cold,
-        size: 100,
-      );
+      return WeatherIcons.snowflake_cold;
     } else if (condition < 800) {
-      return Icon(
-        WeatherIcons.fog,
-        size: 100,
-      );
+      return WeatherIcons.fog;
     } else if (condition == 800) {
-      return Icon(
-        WeatherIcons.day_sunny,
-        size: 100,
-      );
+      return WeatherIcons.day_sunny;
     } else if (condition <= 804) {
-      return Icon(
-        WeatherIcons.cloudy,
-        size: 100,
-      );
+      return WeatherIcons.cloudy;
     } else {
-      return Icon(
-        Icons.error,
-        size: 100,
-      );
+      return Icons.error;
     }
   }
 

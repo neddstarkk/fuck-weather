@@ -4,7 +4,7 @@ import 'package:fuck_weather/screens/widgets/six_word_text.dart';
 import 'package:fuck_weather/screens/widgets/four_word_text.dart';
 import 'package:fuck_weather/screens/widgets/three_word_text.dart';
 import 'package:fuck_weather/services/weather.dart';
-import 'package:fuck_weather/utilities/constants.dart';
+import 'package:fuck_weather/utilities/size_config.dart';
 
 class LocationScreen extends StatefulWidget {
   final locationWeather;
@@ -17,7 +17,7 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
   WeatherModel weather = WeatherModel();
-  Icon weatherIcon;
+  IconData weatherIcon;
   String weatherMessage;
   List<String> listMessage;
 
@@ -31,12 +31,11 @@ class _LocationScreenState extends State<LocationScreen> {
   void updateUI(dynamic weatherData) {
     setState(() {
       if (weatherData == null) {
-        weatherIcon = Icon(Icons.error);
+        weatherIcon = Icons.error;
         weatherMessage = 'Unable to get weather Data';
         return;
       }
       var condition = weatherData['weather'][0]['id'];
-      condition = 600;
       weatherIcon = weather.getWeatherIcon(condition);
       weatherMessage = weather.getMessage(condition);
       listMessage = weatherMessage.split(' ');
@@ -45,14 +44,19 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return SafeArea(
       child: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              child: weatherIcon,
-              margin: EdgeInsets.all(10),
+              child: Icon(
+                weatherIcon,
+                size: SizeConfig.blockSizeVertical * 10,
+              ),
+              margin: EdgeInsets.all(SizeConfig.blockSizeVertical),
             ),
             Spacer(),
             if (listMessage.length == 3)
