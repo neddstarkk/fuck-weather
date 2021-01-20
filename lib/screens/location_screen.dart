@@ -36,6 +36,7 @@ class _LocationScreenState extends State<LocationScreen> {
         return;
       }
       var condition = weatherData['weather'][0]['id'];
+      condition = 700;
       weatherIcon = weather.getWeatherIcon(condition);
       weatherMessage = weather.getMessage(condition);
       listMessage = weatherMessage.split(' ');
@@ -50,6 +51,7 @@ class _LocationScreenState extends State<LocationScreen> {
       child: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               child: Icon(
@@ -58,7 +60,6 @@ class _LocationScreenState extends State<LocationScreen> {
               ),
               margin: EdgeInsets.all(SizeConfig.blockSizeVertical),
             ),
-            Spacer(),
             if (listMessage.length == 3)
               ThreeWordText(
                 listMessage: listMessage,

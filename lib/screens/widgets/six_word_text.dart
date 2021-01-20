@@ -14,91 +14,45 @@ class SixWordText extends StatelessWidget {
       margin: EdgeInsets.only(
           bottom: SizeConfig.blockSizeVertical,
           left: SizeConfig.blockSizeVertical * 2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (listMessage[0] == "Freezing")
-            Text(
-              "${listMessage[0]}",
-              style: kMainTextStyle.copyWith(
-                height: SizeConfig.blockSizeVertical / 12,
-                fontSize: SizeConfig.blockSizeVertical * 9,
-              ),
-            )
-          else
-            Text(
-              "${listMessage[0]} ${listMessage[1]}",
-              style: kMainTextStyle.copyWith(
-                height: SizeConfig.blockSizeVertical / 12,
-                fontSize: SizeConfig.blockSizeVertical * 9,
-              ),
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: listMessage[0] == 'Freezing'
+                  ? "${listMessage[0]}\n"
+                  : "${listMessage[0]} ${listMessage[1]}\n",
+              style: kMainTextStyle,
             ),
-          if (listMessage[1] == "cold")
-            Text(
-              "${listMessage[1]}",
-              style: kMainTextStyle.copyWith(
-                color: Color(0xFF2478B9),
-                height: SizeConfig.blockSizeVertical / 12,
-                fontSize: SizeConfig.blockSizeVertical * 9,
-              ),
-            )
-          else
-            Text(
-              "${listMessage[2]}",
-              style: kMainTextStyle.copyWith(
-                height: SizeConfig.blockSizeVertical / 12,
-                fontSize: SizeConfig.blockSizeVertical * 9,
-              ),
+            TextSpan(
+              text: listMessage[1] == "cold"
+                  ? "${listMessage[1]}\n"
+                  : "${listMessage[2]}\n",
+              style: kMainTextStyle.copyWith(color: Color(0xFF2478B9)),
             ),
-          if (listMessage[2] == "like")
-            Text(
-              "${listMessage[2]} ${listMessage[3]}",
-              style: kMainTextStyle.copyWith(
-                height: SizeConfig.blockSizeVertical / 12,
-                fontSize: SizeConfig.blockSizeVertical * 9,
-              ),
+            TextSpan(
+              text: listMessage[1] == "cold"
+                  ? "${listMessage[2]} ${listMessage[3]}\n"
+                  : "${listMessage[3]}\n",
+              style: listMessage[3] == "storm"
+                  ? kMainTextStyle.copyWith(
+                      color: Color(0xFF8C7494),
+                    )
+                  : kMainTextStyle,
             ),
-          if (listMessage[3] == "storm")
-            Text(
-              "${listMessage[3]}",
-              style: kMainTextStyle.copyWith(
-                color: Color(0xFF8C7494),
-                height: SizeConfig.blockSizeVertical / 12,
-                fontSize: SizeConfig.blockSizeVertical * 9,
-              ),
+            TextSpan(
+              text: "${listMessage[4]} ${listMessage[5]}\n",
+              style: kMainTextStyle,
             ),
-          Text(
-            "${listMessage[4]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
-            ),
-          ),
-          Text(
-            "${listMessage[5]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,),
-          ),
-          if (listMessage[0] == "Freezing")
-            Text(
-              "No offence to your fridge",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeVertical * 2,
-                height: SizeConfig.blockSizeVertical / 4,
-                color: Color(0xFFC3C3C3),
-              ),
-            )
-          else
-            Text(
-              "But hey, at least it cant\'t get any worse",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeVertical * 2,
-                height: SizeConfig.blockSizeVertical / 4,
-                color: Color(0xFFC3C3C3),
-              ),
-            )
-        ],
+            TextSpan(
+                text: listMessage[3] == "storm"
+                    ? "But hey, at least it can\'t get any worse"
+                    : "No offence to your fridge",
+                style: TextStyle(
+                  color: Color(0xFFC3C3C3),
+                  height: 1.5,
+                )),
+          ],
+        ),
       ),
     );
   }

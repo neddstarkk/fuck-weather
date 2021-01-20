@@ -14,41 +14,36 @@ class ThreeWordText extends StatelessWidget {
       margin: EdgeInsets.only(
           bottom: SizeConfig.blockSizeVertical,
           left: SizeConfig.blockSizeVertical * 2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "${listMessage[0]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
-            ),
-          ),
-          Text(
-            "${listMessage[1]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
-            ),
-          ),
-          Text(
-            "${listMessage[2]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
-              color: Color(0xFF9A9A9A),
-            ),
-          ),
-          Text(
-            "Clouds everywhere",
-            style: TextStyle(
-              fontSize: SizeConfig.blockSizeVertical * 2,
-              height: SizeConfig.blockSizeVertical / 4,
-              color: Color(0xFFC3C3C3),
-            ),
-          )
-        ],
+      child: RichText(
+        text: TextSpan(
+            children: [
+              TextSpan(
+                text: "${listMessage[0]}\n${listMessage[1]}\n",
+                style: kMainTextStyle,
+              ),
+              TextSpan(
+                text: "${listMessage[2]}\n",
+                style: kMainTextStyle.copyWith(
+                  color: Color(0xFF9A9A9A),
+                )
+              ),
+              TextSpan(
+                text: "Clouds everywhere, so irritating",
+                style: TextStyle(
+                  color: Color(0xFFC3C3C3),
+                  height: 1.5
+                ),
+              )
+
+            ]
+        ),
       ),
     );
   }
 }
+
+//
+//
+// fontSize: SizeConfig.blockSizeVertical * 2,
+// height: SizeConfig.blockSizeVertical / 4,
+// // color: Color(0xFFC3C3C3),

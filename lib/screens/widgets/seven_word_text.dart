@@ -10,59 +10,33 @@ class SevenWordText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Container(
-      margin: EdgeInsets.only(
-          bottom: SizeConfig.blockSizeVertical,
-          left: SizeConfig.blockSizeVertical * 2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "${listMessage[0]} ${listMessage[1]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
+    return Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: RichText(
+          text: TextSpan(children: [
+            TextSpan(
+              text:
+                  "${listMessage[0]} ${listMessage[1]} ${listMessage[2]}\n${listMessage[3]} ",
+              style: kMainTextStyle,
             ),
-          ),
-          Text(
-            "${listMessage[2]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
+            TextSpan(
+              text: "\n${listMessage[4]}\n",
+              style: kMainTextStyle.copyWith(
+                color: Colors.grey.shade400,
+              ),
             ),
-          ),
-          Text(
-            "${listMessage[3]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
+            TextSpan(
+              text: "${listMessage[5]} ${listMessage[6]}\n",
+              style: kMainTextStyle,
             ),
-          ),
-          Text(
-            "${listMessage[4]}",
-            style: kMainTextStyle.copyWith(
-              color: Colors.grey.shade400,
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
-            ),
-          ),
-          Text(
-            "${listMessage[5]} ${listMessage[6]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
-            ),
-          ),
-          Text(
-            "By little, we mean a lot",
-            style: TextStyle(
-              fontSize: SizeConfig.blockSizeVertical * 2,
-              height: SizeConfig.blockSizeVertical / 5,
-              color: Color(0xFFC3C3C3),
-            ),
-          )
-        ],
-      ),
-    );
+            TextSpan(
+              text: "By little, we mean a lot",
+              style: TextStyle(
+                color: Color(0xFFC3C3C3),
+                height: 1.5
+              ),
+            )
+          ]),
+        ));
   }
 }

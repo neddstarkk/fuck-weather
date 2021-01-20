@@ -14,60 +14,40 @@ class FourWordText extends StatelessWidget {
       margin: EdgeInsets.only(
           bottom: SizeConfig.blockSizeVertical,
           left: SizeConfig.blockSizeVertical * 2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "${listMessage[0]} \n${listMessage[1]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,
+      child: RichText(
+        text: TextSpan(children: [
+          TextSpan(
+            text: "${listMessage[0]}\n${listMessage[1]}",
+            style: kMainTextStyle,
+          ),
+          TextSpan(
+            text: "\n${listMessage[2]}\n",
+            style: listMessage[2] == "sunny"
+                ? kMainTextStyle.copyWith(
+                    color: Color(0xFFECA72C),
+                  )
+                : kMainTextStyle.copyWith(
+                    color: Color(0xFF017EFF),
+                  ),
+          ),
+          TextSpan(text: "${listMessage[3]}\n", style: kMainTextStyle),
+          TextSpan(
+            text: listMessage[2] == 'sunny'
+                ? "Fucking love is in the air rn"
+                : listMessage[2] == 'drizzling'
+                    ? "That icon up there are rain drops you cum slut"
+                    : "You can look outside to see for yourself",
+            style: TextStyle(
+              height: 1.5,
+              color: Color(0xFFC3C3C3),
             ),
           ),
-          Text(
-            "${listMessage[2]}",
-            style: kMainTextStyle.copyWith(
-                height: SizeConfig.blockSizeVertical / 12,
-                fontSize: SizeConfig.blockSizeVertical * 9,
-                color: listMessage[2] == "sunny"
-                    ? Color(0xFFECA72C)
-                    : Color(0xFF017EFF)),
-          ),
-          Text(
-            "${listMessage[3]}",
-            style: kMainTextStyle.copyWith(
-              height: SizeConfig.blockSizeVertical / 12,
-              fontSize: SizeConfig.blockSizeVertical * 9,),
-          ),
-          if (listMessage[2] == 'sunny')
-            Text(
-              "The glowy orb should be visible",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeVertical * 2,
-                height: SizeConfig.blockSizeVertical / 4,
-                color: Color(0xFFC3C3C3),
-              ),
-            )
-          else if (listMessage[2] == "drizzling")
-            Text(
-              "Just enough to ruin your day",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeVertical * 2,
-                height: SizeConfig.blockSizeVertical / 4,
-                color: Color(0xFFC3C3C3),
-              ),
-            )
-          else
-            Text(
-              "You can look outside to see for yourself",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeVertical * 2,
-                height: SizeConfig.blockSizeVertical / 4,
-                color: Color(0xFFC3C3C3),
-              ),
-            )
-        ],
+        ]),
       ),
     );
   }
 }
+
+// Color(0xFFC3C3C3)
+// "Just enough to ruin your day"
+//

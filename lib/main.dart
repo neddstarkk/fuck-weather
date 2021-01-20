@@ -1,8 +1,9 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/loading_screen.dart';
 
-void main() => runApp(App());
+void main() => runApp( App());
 
 class App extends StatelessWidget {
   @override
