@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fuck_weather/screens/location_screen.dart';
-import 'package:fuck_weather/services/location.dart';
 import 'package:fuck_weather/services/weather.dart';
-import 'package:geolocator/geolocator.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -22,7 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     WeatherModel weatherModel = WeatherModel();
     var weatherData = await weatherModel.getLocationWeather();
 
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       CupertinoPageRoute(
         builder: (context) => LocationScreen(

@@ -36,7 +36,6 @@ class _LocationScreenState extends State<LocationScreen> {
         return;
       }
       var condition = weatherData['weather'][0]['id'];
-      condition = 700;
       weatherIcon = weather.getWeatherIcon(condition);
       weatherMessage = weather.getMessage(condition);
       listMessage = weatherMessage.split(' ');
